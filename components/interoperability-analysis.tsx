@@ -25,6 +25,8 @@ const commonDataElements: CommonElement[] = [
     description: "Persistent identifier for the credential or achievement",
     specs: {
       "CASE Specification": { field: "identifier", example: "1ff5dc7c-cd2a-417a-a9a2-11124c69d5ce", present: true },
+      "Ed-Fi": { field: "studentUniqueId", example: "BD-1991-001", present: true },
+      CEDS: { field: "cedsElementId", example: "000100 (Grade Level)", present: true },
       "Open Badge 3.0": { field: "id", example: "urn:uuid:high-school-diploma-2024", present: true },
       CTDL: { field: "ceterms:ctid", example: "ce-8f5b4a2e-1d3c-4f7a-9b00-2fa8c7d5e4c1", present: true },
       "LER-RS": { field: "id", example: "urn:uuid:20060901000000000001", present: true },
@@ -36,6 +38,8 @@ const commonDataElements: CommonElement[] = [
     description: "Human-readable name or title of the achievement",
     specs: {
       "CASE Specification": { field: "fullStatement", example: "Child attends to, understands...", present: true },
+      "Ed-Fi": { field: "assessmentTitle", example: "California Mathematics Assessment - Grade 3", present: true },
+      CEDS: { field: "cedsElementName", example: "Grade Level, Academic Subject", present: true },
       "Open Badge 3.0": { field: "name", example: "High School Diploma", present: true },
       CTDL: { field: "ceterms:name", example: "Bachelor of Arts in Mathematics...", present: true },
       "LER-RS": { field: "name", example: "Brandon Dorman – Early Career Record", present: true },
@@ -51,6 +55,8 @@ const commonDataElements: CommonElement[] = [
         example: "Interpret products of whole numbers...",
         present: true,
       },
+      "Ed-Fi": { field: "objectiveAssessment.description", example: "Number Sense and Operations", present: true },
+      CEDS: { field: "cedsDefinition", example: "The grade level or primary instructional level...", present: true },
       "Open Badge 3.0": { field: "description", example: "High School Diploma awarded upon...", present: true },
       CTDL: { field: "ceterms:description", example: "Awarded Bachelor of Arts from...", present: true },
       "LER-RS": { field: "description", example: "Beginning mathematics educator...", present: true },
@@ -62,6 +68,8 @@ const commonDataElements: CommonElement[] = [
     description: "Date when the credential was issued or became effective",
     specs: {
       "CASE Specification": { field: "lastChangeDateTime", example: "2023-07-03T21:21:14+00:00", present: true },
+      "Ed-Fi": { field: "administrationDate", example: "1991-05-15", present: true },
+      CEDS: { field: "implicit", example: "Not applicable", present: false },
       "Open Badge 3.0": { field: "issuanceDate", example: "2024-05-30T00:00:00Z", present: true },
       CTDL: { field: "ceterms:dateEffective", example: "2005-05-05", present: true },
       "LER-RS": { field: "issuanceDate", example: "2006-09-01T00:00:00.000Z", present: true },
@@ -73,6 +81,8 @@ const commonDataElements: CommonElement[] = [
     description: "Skills, competencies, or learning outcomes associated with the achievement",
     specs: {
       "CASE Specification": { field: "CFItemType", example: "Goal/Standard", present: true },
+      "Ed-Fi": { field: "academicSubjects", example: "Mathematics", present: true },
+      CEDS: { field: "cedsValue", example: "Mathematics, Language Arts", present: true },
       "Open Badge 3.0": { field: "skillsEarned", example: "Critical Thinking, Mathematical Reasoning", present: true },
       CTDL: { field: "ceterms:teaches", example: "Mathematical Analysis, Educational Psychology", present: true },
       "LER-RS": { field: "skills", example: "Mathematics Education, Classroom Management", present: true },
@@ -80,10 +90,25 @@ const commonDataElements: CommonElement[] = [
     },
   },
   {
+    concept: "Performance/Results",
+    description: "Performance indicators, scores, or achievement levels",
+    specs: {
+      "CASE Specification": { field: "implicit", example: "Standard alignment", present: false },
+      "Ed-Fi": { field: "scoreResults", example: "90% (Proficient)", present: true },
+      CEDS: { field: "cedsValue", example: "Proficient, Advanced", present: true },
+      "Open Badge 3.0": { field: "result", example: "GPA: 3.85, Class Rank: 16/400", present: true },
+      CTDL: { field: "implicit", example: "Completion requirements", present: false },
+      "LER-RS": { field: "implicit", example: "Experience descriptions", present: false },
+      CLR: { field: "achievements", example: "Certification completion", present: true },
+    },
+  },
+  {
     concept: "Issuing Organization",
     description: "Organization that issued or granted the credential",
     specs: {
       "CASE Specification": { field: "uri (authority)", example: "satchelcommons.com", present: true },
+      "Ed-Fi": { field: "school.nameOfInstitution", example: "Community Christian Elementary School", present: true },
+      CEDS: { field: "implicit", example: "Not applicable", present: false },
       "Open Badge 3.0": { field: "issuer", example: "Washington High School", present: true },
       CTDL: { field: "ceterms:ownedBy", example: "Fresno Pacific University", present: true },
       "LER-RS": { field: "implicit", example: "Professional Portfolio Services", present: false },
@@ -91,10 +116,25 @@ const commonDataElements: CommonElement[] = [
     },
   },
   {
+    concept: "Grade/Education Level",
+    description: "Educational level or grade associated with the achievement",
+    specs: {
+      "CASE Specification": { field: "educationLevel", example: "03", present: true },
+      "Ed-Fi": { field: "whenAssessedGradeLevelDescriptor", example: "Third grade", present: true },
+      CEDS: { field: "cedsValue", example: "Third grade, Seventh grade", present: true },
+      "Open Badge 3.0": { field: "implicit", example: "Secondary education", present: false },
+      CTDL: { field: "implicit", example: "Bachelor's degree level", present: false },
+      "LER-RS": { field: "implicit", example: "Professional level", present: false },
+      CLR: { field: "implicit", example: "Professional development", present: false },
+    },
+  },
+  {
     concept: "Language",
     description: "Language in which the credential is expressed",
     specs: {
       "CASE Specification": { field: "language", example: "en", present: true },
+      "Ed-Fi": { field: "implicit", example: "en", present: false },
+      CEDS: { field: "implicit", example: "en (US English)", present: false },
       "Open Badge 3.0": { field: "implicit", example: "en", present: false },
       CTDL: { field: "ceterms:inLanguage", example: "en", present: true },
       "LER-RS": { field: "implicit", example: "en", present: false },
@@ -106,6 +146,8 @@ const commonDataElements: CommonElement[] = [
     description: "Cryptographic or other verification mechanism",
     specs: {
       "CASE Specification": { field: "uri", example: "HTTPS URI", present: true },
+      "Ed-Fi": { field: "serialNumber", example: "Assessment serial number", present: true },
+      CEDS: { field: "cedsOptionSetId", example: "Standardized option sets", present: true },
       "Open Badge 3.0": { field: "proof (implicit)", example: "Cryptographic verification", present: true },
       CTDL: { field: "registry", example: "Credential Engine Registry", present: true },
       "LER-RS": { field: "implicit", example: "Digital signature", present: false },
@@ -116,6 +158,8 @@ const commonDataElements: CommonElement[] = [
 
 const specColors = {
   "CASE Specification": "bg-blue-100 text-blue-800",
+  "Ed-Fi": "bg-green-100 text-green-800",
+  CEDS: "bg-teal-100 text-teal-800",
   "Open Badge 3.0": "bg-purple-100 text-purple-800",
   CTDL: "bg-orange-100 text-orange-800",
   "LER-RS": "bg-red-100 text-red-800",
@@ -351,21 +395,40 @@ export default function InteroperabilityAnalysis() {
                   <div className="p-3 bg-green-50 rounded-md">
                     <h4 className="font-medium text-sm text-green-800">Strong Alignment</h4>
                     <p className="text-xs text-green-700">
-                      Identifiers and names are consistently represented across most specifications
+                      Identifiers, names, and dates are consistently represented across most specifications. CEDS
+                      provides excellent vocabulary standardization.
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-teal-50 rounded-md">
+                    <h4 className="font-medium text-sm text-teal-800">CEDS Vocabulary Power</h4>
+                    <p className="text-xs text-teal-700">
+                      CEDS enhances interoperability by providing standardized definitions, option sets, and data
+                      element specifications that can be mapped across all standards.
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-blue-50 rounded-md">
+                    <h4 className="font-medium text-sm text-blue-800">Ed-Fi + CEDS Synergy</h4>
+                    <p className="text-xs text-blue-700">
+                      Ed-Fi operational data enhanced with CEDS vocabulary creates the strongest foundation for K-12
+                      data interoperability and reporting.
                     </p>
                   </div>
 
                   <div className="p-3 bg-yellow-50 rounded-md">
                     <h4 className="font-medium text-sm text-yellow-800">Partial Alignment</h4>
                     <p className="text-xs text-yellow-700">
-                      Skills/competencies use different structures but similar concepts
+                      Skills/competencies use different structures but similar concepts. CEDS provides common vocabulary
+                      that could bridge these differences.
                     </p>
                   </div>
 
                   <div className="p-3 bg-red-50 rounded-md">
                     <h4 className="font-medium text-sm text-red-800">Alignment Opportunity</h4>
                     <p className="text-xs text-red-700">
-                      Verification mechanisms could be standardized across specifications
+                      Verification mechanisms and language specification could benefit from CEDS standardization across
+                      all specifications.
                     </p>
                   </div>
                 </div>

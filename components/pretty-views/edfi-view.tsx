@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
-import { CheckCircle, Target, BarChart3, School, Calendar } from "lucide-react"
+import { CheckCircle, Target, BarChart3, School, Calendar, Database } from "lucide-react"
 
 export default function EdFiView({ data }: { data: any }) {
   const assessment = data.assessments[0]
@@ -66,7 +66,7 @@ export default function EdFiView({ data }: { data: any }) {
           </div>
 
           <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
+            <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="overview" className="text-xs md:text-sm">
                 Overview
               </TabsTrigger>
@@ -75,6 +75,9 @@ export default function EdFiView({ data }: { data: any }) {
               </TabsTrigger>
               <TabsTrigger value="details" className="text-xs md:text-sm">
                 Assessment Details
+              </TabsTrigger>
+              <TabsTrigger value="ceds" className="text-xs md:text-sm">
+                CEDS Mapping
               </TabsTrigger>
             </TabsList>
 
@@ -270,19 +273,60 @@ export default function EdFiView({ data }: { data: any }) {
                 </CardContent>
               </Card>
             </TabsContent>
+
+            <TabsContent value="ceds" className="space-y-4 mt-4">
+              <Card>
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Database className="h-4 w-4" />
+                    <h4 className="font-medium">CEDS Data Vocabulary Mappings</h4>
+                  </div>
+
+                  <div className="space-y-4">
+                    {Object.entries(data.cedsMapping).map(([key, mapping]: [string, any]) => (
+                      <Card key={key} className="p-3">
+                        <div className="space-y-2">
+                          <div className="flex justify-between items-start">
+                            <h5 className="font-medium text-sm">{mapping.cedsElementName}</h5>
+                            <Badge variant="outline" className="text-xs">
+                              ID: {mapping.cedsElementId}
+                            </Badge>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                            <div>
+                              <span className="text-muted-foreground">CEDS Value:</span>
+                              <p className="font-medium">{mapping.cedsValue}</p>
+                            </div>
+                            <div>
+                              <span className="text-muted-foreground">Option Set ID:</span>
+                              <p className="font-mono text-xs">{mapping.cedsOptionSetId}</p>
+                            </div>
+                          </div>
+
+                          <div>
+                            <span className="text-muted-foreground text-xs">Definition:</span>
+                            <p className="text-xs mt-1">{mapping.cedsDefinition}</p>
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
           </Tabs>
         </CardContent>
       </Card>
 
       <div className="bg-muted p-4 rounded-md">
-        <h4 className="font-medium mb-2">Ed-Fi Data Standard Context</h4>
+        <h4 className="font-medium mb-2">Ed-Fi Data Standard with CEDS Context</h4>
         <p className="text-sm text-muted-foreground">
-          The Ed-Fi Data Standard provides a comprehensive framework for K-12 education data exchange, focusing on
-          operational data including student information, assessments, grades, and academic performance. This 3rd grade
-          mathematics assessment from Community Christian Elementary School demonstrates how detailed assessment data is
-          structured, including objective-level performance, multiple scoring methods (raw, percentage, and scale
-          scores), and performance level indicators that support data-driven educational decisions and student progress
-          tracking.
+          The Ed-Fi Data Standard provides a comprehensive framework for K-12 education data exchange, enhanced by CEDS
+          (Common Education Data Standards) vocabulary mappings. CEDS provides standardized definitions and option sets
+          that ensure consistent interpretation of data elements across different systems. This 3rd grade mathematics
+          assessment demonstrates how Ed-Fi operational data is enriched with CEDS vocabulary to improve data quality,
+          comparability, and interoperability across educational platforms and reporting systems.
         </p>
       </div>
     </div>

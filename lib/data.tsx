@@ -9,7 +9,7 @@ import CareerView from "@/components/pretty-views/career-view"
 import ClrView from "@/components/pretty-views/clr-view"
 import type { JourneyData } from "@/lib/types"
 
-// Pre-K CASE Framework data
+// Pre-K CASE Framework data with CEDS mappings
 const preKData = {
   identifier: "1ff5dc7c-cd2a-417a-a9a2-11124c69d5ce",
   uri: "https://satchelcommons.com/ims/case/v1p0/CFItems/1ff5dc7c-cd2a-417a-a9a2-11124c69d5ce",
@@ -24,9 +24,34 @@ const preKData = {
     uri: "https://satchelcommons.com/ims/case/v1p0/CFItemTypes/74fca519-ffbe-4524-bc08-4043c07e2307",
   },
   educationLevel: ["PK"],
+  // CEDS mappings
+  cedsMapping: {
+    gradeLevel: {
+      cedsElementId: "000100",
+      cedsElementName: "Grade Level",
+      cedsOptionSetId: "000126",
+      cedsValue: "Prekindergarten",
+      cedsDefinition:
+        "The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.",
+    },
+    academicSubject: {
+      cedsElementId: "000054",
+      cedsElementName: "Academic Subject",
+      cedsOptionSetId: "000048",
+      cedsValue: "Language Arts",
+      cedsDefinition: "The description of the content and subject area of a curriculum.",
+    },
+    learningStandardItemType: {
+      cedsElementId: "001571",
+      cedsElementName: "Learning Standard Item Type",
+      cedsOptionSetId: "000569",
+      cedsValue: "Learning Goal",
+      cedsDefinition: "The type of learning standard item.",
+    },
+  },
 }
 
-// Elementary School CASE Network data (K-3)
+// Elementary School CASE Network data with CEDS mappings
 const elementaryData = {
   identifier: "5ebef44d-d7cc-11e8-824f-0242ac160002",
   uri: "https://satchelcommons.com/ims/case/v1p0/CFItems/5ebef44d-d7cc-11e8-824f-0242ac160002",
@@ -47,9 +72,41 @@ const elementaryData = {
     district: "Private School",
     location: "Visalia, CA",
   },
+  // CEDS mappings
+  cedsMapping: {
+    gradeLevel: {
+      cedsElementId: "000100",
+      cedsElementName: "Grade Level",
+      cedsOptionSetId: "000126",
+      cedsValue: "Third grade",
+      cedsDefinition:
+        "The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.",
+    },
+    academicSubject: {
+      cedsElementId: "000054",
+      cedsElementName: "Academic Subject",
+      cedsOptionSetId: "000048",
+      cedsValue: "Mathematics",
+      cedsDefinition: "The description of the content and subject area of a curriculum.",
+    },
+    learningStandardItemType: {
+      cedsElementId: "001571",
+      cedsElementName: "Learning Standard Item Type",
+      cedsOptionSetId: "000569",
+      cedsValue: "Standard",
+      cedsDefinition: "The type of learning standard item.",
+    },
+    schoolType: {
+      cedsElementId: "000205",
+      cedsElementName: "School Type",
+      cedsOptionSetId: "000293",
+      cedsValue: "Private school",
+      cedsDefinition: "The type of education institution as classified by its funding source.",
+    },
+  },
 }
 
-// EdFi 3rd Grade Assessment Data
+// EdFi 3rd Grade Assessment Data with CEDS mappings
 const edFiAssessmentData = {
   studentUniqueId: "BD-1991-001",
   studentPersonalIdentificationSystemDescriptor: "uri://ed-fi.org/StudentIdentificationSystemDescriptor#School",
@@ -276,9 +333,55 @@ const edFiAssessmentData = {
   ],
   schoolYear: 1991,
   sessionName: "Spring 1991",
+  // CEDS mappings
+  cedsMapping: {
+    gradeLevel: {
+      cedsElementId: "000100",
+      cedsElementName: "Grade Level",
+      cedsOptionSetId: "000126",
+      cedsValue: "Third grade",
+      cedsDefinition:
+        "The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.",
+    },
+    academicSubject: {
+      cedsElementId: "000054",
+      cedsElementName: "Academic Subject",
+      cedsOptionSetId: "000048",
+      cedsValue: "Mathematics",
+      cedsDefinition: "The description of the content and subject area of a curriculum.",
+    },
+    assessmentType: {
+      cedsElementId: "000056",
+      cedsElementName: "Assessment Type",
+      cedsOptionSetId: "000050",
+      cedsValue: "State summative assessment 3-8",
+      cedsDefinition: "The type of assessment given to a person.",
+    },
+    assessmentPerformanceLevel: {
+      cedsElementId: "000057",
+      cedsElementName: "Assessment Performance Level",
+      cedsOptionSetId: "000051",
+      cedsValue: "Proficient",
+      cedsDefinition: "The performance level achieved by a person on an assessment.",
+    },
+    schoolType: {
+      cedsElementId: "000205",
+      cedsElementName: "School Type",
+      cedsOptionSetId: "000293",
+      cedsValue: "Private school",
+      cedsDefinition: "The type of education institution as classified by its funding source.",
+    },
+    assessmentPurpose: {
+      cedsElementId: "000058",
+      cedsElementName: "Assessment Purpose",
+      cedsOptionSetId: "000052",
+      cedsValue: "Summative",
+      cedsDefinition: "The reason for which an assessment is designed or delivered.",
+    },
+  },
 }
 
-// Middle School OneRoster data
+// Middle School OneRoster data with CEDS mappings
 const middleSchoolData = {
   academicSession: {
     id: "1996-MS-S1",
@@ -327,9 +430,48 @@ const middleSchoolData = {
       grade: "B",
     },
   ],
+  // CEDS mappings
+  cedsMapping: {
+    gradeLevel: {
+      cedsElementId: "000100",
+      cedsElementName: "Grade Level",
+      cedsOptionSetId: "000126",
+      cedsValue: "Seventh grade",
+      cedsDefinition:
+        "The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.",
+    },
+    schoolType: {
+      cedsElementId: "000205",
+      cedsElementName: "School Type",
+      cedsOptionSetId: "000293",
+      cedsValue: "Public school",
+      cedsDefinition: "The type of education institution as classified by its funding source.",
+    },
+    schoolLevel: {
+      cedsElementId: "000206",
+      cedsElementName: "School Level",
+      cedsOptionSetId: "000294",
+      cedsValue: "Middle",
+      cedsDefinition: "The level of school.",
+    },
+    courseGradeLevel: {
+      cedsElementId: "000131",
+      cedsElementName: "Course Grade Level",
+      cedsOptionSetId: "000126",
+      cedsValue: "Seventh grade",
+      cedsDefinition: "The grade levels for which the course is designed.",
+    },
+    academicTermDesignator: {
+      cedsElementId: "000055",
+      cedsElementName: "Academic Term Designator",
+      cedsOptionSetId: "000049",
+      cedsValue: "Semester",
+      cedsDefinition: "The academic term for which the data apply.",
+    },
+  },
 }
 
-// High School Open Badge 3.0 data
+// High School Open Badge 3.0 data with CEDS mappings
 const highSchoolData = {
   "@context": ["https://www.w3.org/2018/credentials/v1", "https://purl.imsglobal.org/spec/ob/v3p0/context.json"],
   type: ["VerifiableCredential", "OpenBadgeCredential"],
@@ -384,9 +526,50 @@ const highSchoolData = {
       yearsAttended: "1997-2001",
     },
   },
+  // CEDS mappings
+  cedsMapping: {
+    gradeLevel: {
+      cedsElementId: "000100",
+      cedsElementName: "Grade Level",
+      cedsOptionSetId: "000126",
+      cedsValue: "Twelfth grade",
+      cedsDefinition:
+        "The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.",
+    },
+    schoolType: {
+      cedsElementId: "000205",
+      cedsElementName: "School Type",
+      cedsOptionSetId: "000293",
+      cedsValue: "Public school",
+      cedsDefinition: "The type of education institution as classified by its funding source.",
+    },
+    schoolLevel: {
+      cedsElementId: "000206",
+      cedsElementName: "School Level",
+      cedsOptionSetId: "000294",
+      cedsValue: "High",
+      cedsDefinition: "The level of school.",
+    },
+    diplomaCredentialType: {
+      cedsElementId: "000081",
+      cedsElementName: "Diploma Credential Type",
+      cedsOptionSetId: "000075",
+      cedsValue: "Regular high school diploma",
+      cedsDefinition:
+        "The type of diploma/credential that is awarded to a person in recognition of his/her completion of the curricular requirements.",
+    },
+    highSchoolDiplomaType: {
+      cedsElementId: "000104",
+      cedsElementName: "High School Diploma Type",
+      cedsOptionSetId: "000120",
+      cedsValue: "Regular diploma",
+      cedsDefinition:
+        "The type of diploma/credential that is awarded to a person in recognition of his/her completion of the curricular requirements.",
+    },
+  },
 }
 
-// College CTDL (Credential Engine) data
+// College CTDL (Credential Engine) data with CEDS mappings
 const collegeCtdlData = {
   "@context": "https://credreg.net/ctdl/schema/context/json",
   "@type": "ceterms:Degree",
@@ -552,9 +735,41 @@ const collegeCtdlData = {
   "ceterms:inLanguage": ["en"],
   "ceterms:availableOnlineAt": ["https://www.fresno.edu/admissions"],
   "ceterms:availabilityListing": ["https://www.fresno.edu/programs/mathematics-psychology"],
+  // CEDS mappings
+  cedsMapping: {
+    postsecondaryInstitutionLevel: {
+      cedsElementId: "000165",
+      cedsElementName: "Postsecondary Institution Level",
+      cedsOptionSetId: "000244",
+      cedsValue: "Four or more years",
+      cedsDefinition:
+        "A classification of whether a postsecondary institution's highest level of offering is a program that does not award a recognized credential.",
+    },
+    degreeOrCertificateType: {
+      cedsElementId: "000079",
+      cedsElementName: "Degree Or Certificate Type",
+      cedsOptionSetId: "000073",
+      cedsValue: "Bachelor's degree",
+      cedsDefinition: "The type of degree or certificate an individual seeks to earn or has earned.",
+    },
+    academicSubject: {
+      cedsElementId: "000054",
+      cedsElementName: "Academic Subject",
+      cedsOptionSetId: "000048",
+      cedsValue: "Mathematics",
+      cedsDefinition: "The description of the content and subject area of a curriculum.",
+    },
+    institutionType: {
+      cedsElementId: "000114",
+      cedsElementName: "Institution Type",
+      cedsOptionSetId: "000136",
+      cedsValue: "Private, not-for-profit",
+      cedsDefinition: "The type of institution, related to religious affiliation, ownership, and profit status.",
+    },
+  },
 }
 
-// Early Career LER-RS data (2006)
+// Early Career LER-RS data (2006) with CEDS mappings
 const earlyCareerData = {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
@@ -583,9 +798,41 @@ const earlyCareerData = {
     profiles: [],
     awards: ["California Teaching Credential, 2006", "Outstanding New Teacher Recognition, Fresno USD, 2007"],
   },
+  // CEDS mappings
+  cedsMapping: {
+    teachingCredentialType: {
+      cedsElementId: "000218",
+      cedsElementName: "Teaching Credential Type",
+      cedsOptionSetId: "000308",
+      cedsValue: "Regular or standard state teaching credential or license",
+      cedsDefinition:
+        "An indication of the category of a legal document giving authorization to perform teaching assignment services.",
+    },
+    academicSubject: {
+      cedsElementId: "000054",
+      cedsElementName: "Academic Subject",
+      cedsOptionSetId: "000048",
+      cedsValue: "Mathematics",
+      cedsDefinition: "The description of the content and subject area of a curriculum.",
+    },
+    teachingAssignmentRole: {
+      cedsElementId: "000217",
+      cedsElementName: "Teaching Assignment Role",
+      cedsOptionSetId: "000307",
+      cedsValue: "Teacher",
+      cedsDefinition: "The role a person plays in a teaching assignment.",
+    },
+    employmentStatus: {
+      cedsElementId: "000085",
+      cedsElementName: "Employment Status",
+      cedsOptionSetId: "000079",
+      cedsValue: "Employed",
+      cedsDefinition: "An individual's employment status.",
+    },
+  },
 }
 
-// Career CLR data with actual Credly badges
+// Career CLR data with actual Credly badges and CEDS mappings
 const careerClrData = {
   "@context": ["https://www.w3.org/2018/credentials/v1", "https://purl.imsglobal.org/spec/clr/v2p0/context.json"],
   id: "urn:uuid:20230531000801107940",
@@ -876,6 +1123,37 @@ const careerClrData = {
     verificationMethod: "https://professional-portfolio.org/issuers/career-advancement#key-1",
     proofPurpose: "assertionMethod",
     proofValue: "z58DAdFfa9SkqZMVPxAQpic6FuWQV2cEiTKw4QKQVFKQ3RHXLJAXZqZ9tEW7KGXGFYzbNJSugk5cDLhkYcqrVeKu",
+  },
+  // CEDS mappings
+  cedsMapping: {
+    professionalDevelopmentActivityType: {
+      cedsElementId: "000171",
+      cedsElementName: "Professional Development Activity Type",
+      cedsOptionSetId: "000252",
+      cedsValue: "Certification program",
+      cedsDefinition: "The type of professional development activity.",
+    },
+    professionalTechnicalCredentialType: {
+      cedsElementId: "000172",
+      cedsElementName: "Professional Technical Credential Type",
+      cedsOptionSetId: "000253",
+      cedsValue: "Industry certification",
+      cedsDefinition: "The type of professional or technical credential.",
+    },
+    employmentStatus: {
+      cedsElementId: "000085",
+      cedsElementName: "Employment Status",
+      cedsOptionSetId: "000079",
+      cedsValue: "Employed",
+      cedsDefinition: "An individual's employment status.",
+    },
+    workBasedLearningOpportunityType: {
+      cedsElementId: "000243",
+      cedsElementName: "Work Based Learning Opportunity Type",
+      cedsOptionSetId: "000347",
+      cedsValue: "Professional development",
+      cedsDefinition: "The type of work based learning opportunity a student participates in.",
+    },
   },
 }
 
