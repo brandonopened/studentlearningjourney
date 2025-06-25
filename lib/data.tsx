@@ -1,4 +1,4 @@
-import { GraduationCap, BookOpen, School, Building2, Award, Briefcase, ClipboardCheck } from "lucide-react"
+import { GraduationCap, BookOpen, School, Building2, Award, Briefcase, ClipboardCheck, Database } from "lucide-react"
 import PreKView from "@/components/pretty-views/pre-k-view"
 import ElementaryView from "@/components/pretty-views/elementary-view"
 import EdFiView from "@/components/pretty-views/edfi-view"
@@ -7,6 +7,7 @@ import HighSchoolView from "@/components/pretty-views/high-school-view"
 import CtdlView from "@/components/pretty-views/ctdl-view"
 import CareerView from "@/components/pretty-views/career-view"
 import ClrView from "@/components/pretty-views/clr-view"
+import WashingtonP20WView from "@/components/pretty-views/washington-p20w-view"
 import type { JourneyData } from "@/lib/types"
 
 // Pre-K CASE Framework data with CEDS mappings
@@ -1157,6 +1158,136 @@ const careerClrData = {
   },
 }
 
+// Washington State P20W Data System data
+const washingtonP20WData = {
+  organization: "Washington State Education Research & Data Center (ERDC)",
+  studyDate: "June 2023",
+  description:
+    "The Washington State P20W (Preschool through 20 and Workforce) Data System is a comprehensive longitudinal data system that integrates educational and workforce data to support policy development, program evaluation, and educational improvement across the state.",
+  visionStatement:
+    "To continually enhance the P20W Data System to align goals and corresponding initiatives that contribute to its progress in serving stakeholders with accessible, high-quality data for informed decision-making.",
+  dataSources: [
+    "Early Learning (DCYF)",
+    "K-12 Education (OSPI)",
+    "Higher Education (WSAC)",
+    "Workforce Data (ESD)",
+    "Student Financial Aid",
+    "Teacher Preparation Programs",
+  ],
+  stakeholders: [
+    "State Agencies",
+    "Educational Institutions",
+    "Researchers",
+    "Policymakers",
+    "Students & Families",
+    "Employers",
+  ],
+  strategicGoals: [
+    "Improve customer satisfaction and stakeholder partnerships",
+    "Enhance data accessibility and user experience",
+    "Modernize infrastructure and technical capabilities",
+    "Strengthen data governance and quality standards",
+    "Expand analytical capabilities and insights",
+    "Increase organizational capacity and skillsets",
+  ],
+  futureStateArchitecture: {
+    description:
+      "A cloud-first data architecture featuring data lakes for pre-stage and staging, a new curated enterprise data warehouse to replace the current Operational Data Storage, and expanded use of data marts organized around research cohorts.",
+    components: [
+      {
+        name: "Data Lakes",
+        description: "Pre-stage and staging areas for raw and processed data",
+      },
+      {
+        name: "Enterprise Data Warehouse",
+        description: "Curated, high-quality data repository replacing current ODS",
+      },
+      {
+        name: "Research Data Marts",
+        description: "Specialized data marts organized around research cohorts",
+      },
+      {
+        name: "Cloud Infrastructure",
+        description: "Scalable, modern cloud-based platform",
+      },
+    ],
+  },
+  operatingModel: {
+    additionalFTEs: {
+      persisting: "3.5 FTEs",
+      temporary: "7.5 FTEs",
+    },
+    priorityProcesses: [
+      "Funding and resourcing",
+      "Change management",
+      "Data literacy training",
+      "Data quality management",
+      "Stakeholder engagement",
+    ],
+    governanceImprovements: [
+      "Communication plans and stakeholder engagement strategies",
+      "Fulfillment metrics and service level agreements",
+      "Data quality standards and monitoring procedures",
+      "Data governance policies and procedures",
+      "Training and professional development programs",
+    ],
+  },
+  technologyInvestments: [
+    "Data acquisition and integration tools",
+    "Modern database platforms",
+    "Master data management systems",
+    "Data quality and validation tools",
+    "Analytics and business intelligence platforms",
+    "Cloud infrastructure and services",
+  ],
+  implementationPlan: {
+    description:
+      "A three-phase roadmap to plan, build and implement the recommendations over a 3+ year time horizon, while optimizing the current environment to achieve near-term value.",
+    phases: [
+      {
+        name: "Phase 1: Planning & Foundation",
+        duration: "6-12 months",
+        description: "Establish governance, plan architecture, and begin current system optimization",
+        keyActivities: [
+          "Develop detailed implementation plans",
+          "Establish governance structures",
+          "Begin staff augmentation",
+          "Optimize current environment",
+        ],
+      },
+      {
+        name: "Phase 2: Build & Migrate",
+        duration: "18-24 months",
+        description: "Implement new architecture and begin data migration",
+        keyActivities: [
+          "Deploy cloud infrastructure",
+          "Build data lakes and warehouse",
+          "Migrate priority data sources",
+          "Develop new analytics capabilities",
+        ],
+      },
+      {
+        name: "Phase 3: Optimize & Scale",
+        duration: "12+ months",
+        description: "Complete migration, optimize performance, and scale capabilities",
+        keyActivities: [
+          "Complete data migration",
+          "Optimize system performance",
+          "Expand analytical capabilities",
+          "Full stakeholder onboarding",
+        ],
+      },
+    ],
+  },
+  nextSteps: [
+    "Review and prioritize study recommendations with leadership and stakeholders",
+    "Conduct July Q&A Discussion with partners and staff to gather feedback",
+    "Engage with other P20W data systems across the country for additional insights",
+    "Develop detailed funding proposals and resource allocation plans",
+    "Begin planning for Phase 1 implementation activities",
+  ],
+}
+
 export const educationalJourneyData: JourneyData[] = [
   {
     id: "pre-k",
@@ -1227,6 +1358,99 @@ export const educationalJourneyData: JourneyData[] = [
     icon: <Briefcase className="h-4 w-4" />,
     prettyView: <CareerView data={earlyCareerData} />,
     rawData: earlyCareerData,
+  },
+  {
+    id: "career",
+    title: "Career Advancement",
+    year: "2023",
+    description: "Professional Certifications & Data Science Skills",
+    standard: "CLR (1EdTech)",
+    icon: <Briefcase className="h-4 w-4" />,
+    prettyView: <ClrView data={careerClrData} />,
+    rawData: careerClrData,
+  },
+]
+
+export const washingtonStateJourneyData: JourneyData[] = [
+  {
+    id: "pre-k",
+    title: "Pre-K Education",
+    year: "1987-1988",
+    description: "Head Start Early Learning Outcomes",
+    standard: "CASE Framework",
+    icon: <GraduationCap className="h-4 w-4" />,
+    prettyView: <PreKView data={preKData} />,
+    rawData: preKData,
+  },
+  {
+    id: "elementary-k3",
+    title: "Elementary School (K-3)",
+    year: "1988-1991",
+    description: "Community Christian Elementary School - Learning Standards",
+    standard: "CASE Network (1EdTech)",
+    icon: <BookOpen className="h-4 w-4" />,
+    prettyView: <ElementaryView data={elementaryData} />,
+    rawData: elementaryData,
+  },
+  {
+    id: "elementary-assessment",
+    title: "3rd Grade Assessment",
+    year: "1991",
+    description: "California Mathematics Assessment - Grade 3",
+    standard: "Ed-Fi Data Standard",
+    icon: <ClipboardCheck className="h-4 w-4" />,
+    prettyView: <EdFiView data={edFiAssessmentData} />,
+    rawData: edFiAssessmentData,
+  },
+  {
+    id: "middle-school",
+    title: "Middle School",
+    year: "1995-1997",
+    description: "La Joya Middle School - 7th Grade Academic Record",
+    standard: "OneRoster",
+    icon: <School className="h-4 w-4" />,
+    prettyView: <MiddleSchoolView data={middleSchoolData} />,
+    rawData: middleSchoolData,
+  },
+  {
+    id: "high-school",
+    title: "High School",
+    year: "1997-2001",
+    description: "Mt Whitney High School, Visalia, CA - Ranked 16 out of 400",
+    standard: "Open Badge 3.0",
+    icon: <Building2 className="h-4 w-4" />,
+    prettyView: <HighSchoolView data={highSchoolData} />,
+    rawData: highSchoolData,
+  },
+  {
+    id: "college",
+    title: "College",
+    year: "2005",
+    description: "Bachelor's Degree Credential",
+    standard: "CTDL (Credential Engine)",
+    icon: <Award className="h-4 w-4" />,
+    prettyView: <CtdlView data={collegeCtdlData} />,
+    rawData: collegeCtdlData,
+  },
+  {
+    id: "early-career",
+    title: "Early Career",
+    year: "2006",
+    description: "Math Teacher",
+    standard: "LER-RS",
+    icon: <Briefcase className="h-4 w-4" />,
+    prettyView: <CareerView data={earlyCareerData} />,
+    rawData: earlyCareerData,
+  },
+  {
+    id: "p20w-system",
+    title: "P20W Data System",
+    year: "2023",
+    description: "Washington State Longitudinal Data System Study",
+    standard: "P20W Data System",
+    icon: <Database className="h-4 w-4" />,
+    prettyView: <WashingtonP20WView data={washingtonP20WData} />,
+    rawData: washingtonP20WData,
   },
   {
     id: "career",
